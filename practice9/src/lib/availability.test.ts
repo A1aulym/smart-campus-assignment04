@@ -26,6 +26,14 @@ describe("checkAvailability boundary tests (T01–T16)", () => {
     expect(result.reason).toBe("before_current_time");
   });
 
+  it("AC1: rejects a booking starting before current time", () => {
+    const room = defaultRoom();
+    const result = checkAvailability(539, 600, room);
+  
+    expect(result.available).toBe(false);
+    expect(result.reason).toBe("before_current_time");
+  });
+
   // T03 — AC1: zero duration is unavailable
   it("T03 AC1: zero duration is unavailable", () => {
     const room = defaultRoom();
